@@ -1,34 +1,33 @@
-import { Fragment } from "react";
+
 import { PropertyTypeButton } from "./components/PropertyTypeButton";
-import { PropertyTypeImage } from "./components/PropertyTypeImage";
-import { PropertyTypeLabel, PropertyTypeLabelH2, PropertyTypeLabelH3, PropertyTypeLabelTitle } from "./components/PropertyTypeLabel";
-import { PropertyTypesContainer, PropertyTypesContainerHead, PropertyTypesContainerHead2, PropertyTypesContainerS2 } from "./styles";
+import { PropertyProfile } from "./components/PropertyProfile";
+import { PropertyTypesContainer, PropertyTypesContainerHead, PropertyTypesContainerWelcome } from "./styles";
+import {IoBusiness, IoHome, IoMap, IoPrism, IoLocation} from "react-icons/io5";
+import {PropertyCard} from "./components/PropertyCard" 
+import { Page } from "../../components/Page";
+import { PropertyWelcome } from "./components/PropertyWelcome";
 
 const PropertiesTypes = [
-    {icon: 'icono-apartamento', label:'Apartamentos'},
-    {icon: 'icono-casa', label:'Casas'},
-    {icon: 'icono-lote', label:'Lotes'},
-    {icon: 'icono-finca', label:'Fincas'},
-    {icon: 'icono-local', label:'Locales'}
+    {icon: IoBusiness, label:'Apartamentos'},
+    {icon: IoHome, label:'Casas'},
+    {icon: IoMap, label:'Lotes'},
+    {icon: IoPrism, label:'Fincas'},
+    {icon: IoLocation, label:'Locales'}
 ]
 
 
 export const Home = () => (
-    <Fragment>
-               
+    <Page>               
         <PropertyTypesContainerHead>
-            <PropertyTypeImage lblhrc={"https://cdn.pixabay.com/photo/2017/02/16/23/10/smile-2072907__340.jpg"}/> 
-            <PropertyTypesContainerHead2>
-                <PropertyTypeLabelH3 text="Hi," />
-                <PropertyTypeLabel text="Sandra Smith Holteisman"/> 
-            </PropertyTypesContainerHead2>            
+            <PropertyProfile
+                lblhrc={"https://cdn.pixabay.com/photo/2017/02/16/23/10/smile-2072907__340.jpg"}
+                lblNameClient = {"Sandra Smith Holteisman"}
+            />             
         </PropertyTypesContainerHead>
-        
-        <PropertyTypesContainerS2>
-            <PropertyTypeLabelTitle text="Find"/>           
-            <PropertyTypeLabelH2 text="Best place nearby"/>
-        </PropertyTypesContainerS2>
-
+                
+        <PropertyTypesContainerWelcome>
+            <PropertyWelcome />
+        </PropertyTypesContainerWelcome>
                          
         <PropertyTypesContainer>             
             {          
@@ -36,6 +35,8 @@ export const Home = () => (
                     <PropertyTypeButton icon={item.icon} label={item.label}/> )
             }
         </PropertyTypesContainer>
-    </Fragment>
+
+        <PropertyCard />
+    </Page>
     
 )
