@@ -1,9 +1,10 @@
 import { Page } from "../../components/Page";
+import { PageTitle } from "../../globalStyles";
 
 export const NotFound =()=>(
 
     <Page>
-        <h1>Pagina No Encontrada - 404</h1>
+        <PageTitle>Pagina No Encontrada - 404</PageTitle>
     </Page>
     
 )

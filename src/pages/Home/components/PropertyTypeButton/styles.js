@@ -13,6 +13,7 @@ export const PropertyTypeButtonWrapper = styled.div`
     p{
         color: #4A148C;
     }
+    
     &:hover{
         background: #4A148C;
         cursor: pointer;

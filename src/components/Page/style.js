@@ -2,5 +2,5 @@
 import styled from 'styled-components';
 
 export const PageWrapper = styled.section`
-    margin: 10px 15px;
+    margin: 10px 15px 90px;
 `;

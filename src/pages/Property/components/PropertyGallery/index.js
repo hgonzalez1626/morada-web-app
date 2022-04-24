@@ -1,4 +1,4 @@
-import { PropertyGalleryWrapper, PropertyImageWrapper } from "./styles";
+import { PropertyGalleryWrapper } from "./styles";
 
 export const PropertyGallery=()=>(
     <PropertyGalleryWrapper>
