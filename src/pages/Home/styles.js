@@ -19,6 +19,6 @@ export const PropertyTypesContainerWelcome = styled.section`
 export const PropertyTypesContainer = styled.section`
     //border: 1px solid orange;
     display: flex;
-    overflow-x: scroll;
+    overflow-x: scroll; 
     
 `

@@ -1,22 +1,37 @@
-
+import { useState } from "react";
 import {Page} from "../../components/Page"
-import { FormControl, PageTitle } from "../../globalStyles";
+import { FormControl, FormControlAction, FormControlInput, PageTitle } from "../../globalStyles";
 import {Button} from "../../components/Button"
 import { LoginWrapper } from "./styles";
+import { ButtonIcon } from "../../components/ButtonIcon";
+import {IoEye, IoEyeOff} from "react-icons/io5";
 
 
-export const Login = () =>(
+export const Login = () =>{
+    const [visiblePassword, setVisiblePassword] = useState(false)
+
+    const tooglePasswordVisible = () =>{       
+        setVisiblePassword(!visiblePassword)
+    }
+    return(
     <Page hideMenu>
-        <PageTitle>Iniciar Sección</PageTitle>
+        <PageTitle>Iniciar Sección </PageTitle>
         <br />
         <form>
             <FormControl>
-                <label>Correo Electrónico</label>
-                <input type="email" />
+                <FormControlInput>
+                    <label>Correo Electrónico</label>
+                    <input type="email" />
+                </FormControlInput>                
             </FormControl>
             <FormControl>
-                <label>Password</label>
-                <input type="password" />                          
+                <FormControlInput>
+                    <label>Password</label>
+                    <input type={visiblePassword ? "text":"password"} />
+                </FormControlInput>
+                <FormControlAction>
+                    <ButtonIcon icon={visiblePassword ? IoEye : IoEyeOff} onPress={tooglePasswordVisible} />                     
+                </FormControlAction>                           
             </FormControl>
             <br />
             <Button label="Ingresar" onPress={()=>alert("Iniciar Sección")} />
@@ -27,4 +42,4 @@ export const Login = () =>(
             <Button label="Registrarse ahora" linkTo={"/Signup"} />
         </form>
     </Page>
-);
+)};

@@ -1,8 +1,11 @@
 
 import styled, {createGlobalStyle} from "styled-components";
+import { MENU_HEIGHT } from "./constants/styles";
 
 export const GlobalStyle = createGlobalStyle`
-
+        *, ::after, ::before {
+        box-sizing: border-box;
+    }
     body{
         margin: 0;
         padding: 0;
@@ -28,24 +31,45 @@ export const SubTitle = styled.p`
 `;
 
 export const FormControl = styled.div`
-    width: auto;
+    width: 100%;
     margin: 5px 0;
     border-radius: 6px;
     background-color: #F2F2F2;
     padding: 5px 10px;
     //border: 1px solid red;
+    display: flex;
     
+    
+`;
+
+export const FormControlInput = styled.div`
+    //border: 1px solid blue;
+    flex: 1;
+
     label{
         display: block;
-        font-size: 0.9em;
+        font-size: 0.95em;
         color: #222;
         font-weight: 500;               
     }
     input[type="email"], input[type="password"],
     input[type="text"], input[type="number"]{
-        display: block;
+        //display: block;
         width: 100%;
-        border-radius: 10px;
+        //border-radius: 10px;
+        font-size: 1.1em;
+        padding: 5px 10px;
+        margin: 0px;
+        background-color: transparent;
+        border: none;
+        outline: none;    
+
+    }
+
+    select{
+        //display: block;
+        width: 100%;
+        //border-radius: 10px;
         font-size: 1.1em;
         padding: 5px 10px;
         margin: 0px;
@@ -54,4 +78,47 @@ export const FormControl = styled.div`
         outline: none;        
 
     }
-`;
+`
+
+export const FormControlInputRadio = styled.div`
+    display: flex;
+    margin: 10px;
+    label{
+        display: block;
+        font-size: 0.95em;
+        color: #222;
+        font-weight: 500;               
+    }
+    input[type="radio"]{
+        margin-left: 8px;
+        margin-right: 24px;
+    }    
+`
+export const FormControlInputFile = styled.div`
+    display: flex;
+    margin: 10px;
+    label{
+        display: block;
+        font-size: 0.95em;
+        color: #222;
+        font-weight: 500;               
+    }
+    input[type="file"]{
+        margin-left: 8px;
+    }    
+`
+
+export const FormControlAction = styled.div`
+    //border: 1px solid orange;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+`
+
+export const FooterFixed = styled.footer`
+    position: fixed;
+    bottom: ${MENU_HEIGHT + 5}px;
+    left: 0;
+    width: 100%;
+`
+

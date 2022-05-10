@@ -2,7 +2,7 @@
 import styled from 'styled-components'
 
 export const PropertyTypeButtonWrapper = styled.div`
-    background-color: #F3E5F5;
+    background-color: ${props => props.selected ? '#4A148C' : '#F3E5F5' };
     border-radius: 10px;
     min-width: 150px;
     margin: 0 5px;
@@ -11,7 +11,7 @@ export const PropertyTypeButtonWrapper = styled.div`
     align-items: center;
 
     p{
-        color: #4A148C;
+        color: ${props => props.selected ? '#fff' : '#4A148C' };
     }
     
     &:hover{
@@ -27,9 +27,9 @@ export const PropertyTypeButtonWrapper = styled.div`
 `
 
 export const Iconwrapper = styled.div`
-    margin-top: 5px;
+    margin-top: 9px;
     svg{
         font-size: 2.0em;
-        color: #4a148c;
+        color: ${props => props.selected ? '#fff' : '#4A148C' };
     }
 `;

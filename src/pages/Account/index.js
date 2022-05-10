@@ -1,7 +1,7 @@
 import { Button } from "../../components/Button";
 import {Page} from "../../components/Page"
-import { PageTitle } from "../../globalStyles";
-import { AccountWrapper } from "./styles";
+import { FooterFixed, PageTitle } from "../../globalStyles";
+
 
 export const Account = () =>{
 
@@ -12,8 +12,13 @@ export const Account = () =>{
             <h3>Hector</h3>
             <h5>2323232</h5>
             <p>hgonzalez1626@gmail.com</p>
-            <hr />            
-            <Button label="Cerrar Sección" onPress={() =>{alert('Cerrar Seccion')}} />
+            <hr />
+            <FooterFixed>
+                <Button 
+                    label="Cerrar Sección" 
+                    onPress={() =>{alert('Cerrar Sesión')}} 
+                />
+            </FooterFixed>                       
         </div>
     )
 

@@ -1,38 +1,59 @@
 
+import { useState, useEffect } from "react";
 import { PropertyTypeButton } from "./components/PropertyTypeButton";
 import { PropertyProfile } from "./components/PropertyProfile";
-import { PropertyTypesContainer, PropertyTypesContainerHead, PropertyTypesContainerWelcome } from "./styles";
+import { PropertyTypesContainer, 
+         PropertyTypesContainerHead, 
+         PropertyTypesContainerWelcome } from "./styles";
 import {IoBusiness, IoHome, IoMap, IoPrism, IoLocation} from "react-icons/io5";
 import {PropertyCard} from "./components/PropertyCard" 
 import { Page } from "../../components/Page";
 import { PropertyWelcome } from "./components/PropertyWelcome";
 
 const PropertiesTypes = [
-    {icon: IoBusiness, label:'Apartamentos'},
-    {icon: IoHome, label:'Casas'},
-    {icon: IoMap, label:'Lotes'},
-    {icon: IoPrism, label:'Fincas'},
-    {icon: IoLocation, label:'Locales'}
-]
+    { id: 1, icon: IoBusiness, label:'Apartamentos'},
+    { id: 2, icon: IoHome, label:'Casas'},
+    { id: 3, icon: IoMap, label:'Lotes'},
+    { id: 4, icon: IoPrism, label:'Fincas'},
+    { id: 5, icon: IoLocation, label:'Locales'}
+];
 
 
-export const Home = () => (
+export const Home = () => {
+
+    const [propertyTypeSeleted, setPropertyTypeSelected] = useState(1);
+
+    const propertyTypeHandler = (id)=>{
+        setPropertyTypeSelected(id);
+    }
+
+    useEffect(() => {
+        console.log('propertyTypeSeleted ' + propertyTypeSeleted);
+    },[propertyTypeSeleted])
+    
+    return(
     <Page>               
         <PropertyTypesContainerHead>
             <PropertyProfile
-                lblhrc={"https://cdn.pixabay.com/photo/2017/02/16/23/10/smile-2072907__340.jpg"}
-                lblNameClient = {"Sandra Smith Holteisman"}
-            />             
+                lblhrc={"Fotohdgf.jpg"}
+                lblNameClient = {"Hector Gonzalez"}
+            />                    
         </PropertyTypesContainerHead>
                 
         <PropertyTypesContainerWelcome>
-            <PropertyWelcome />
+            <PropertyWelcome />            
         </PropertyTypesContainerWelcome>
                          
         <PropertyTypesContainer>             
             {          
                 PropertiesTypes.map(item => 
-                    <PropertyTypeButton icon={item.icon} label={item.label}/> )
+                    <PropertyTypeButton 
+                        selected={propertyTypeSeleted === item.id}
+                        icon={item.icon} 
+                        label={item.label}
+                        id={item.id}
+                        onPress={propertyTypeHandler}
+                    /> )
             }
         </PropertyTypesContainer>
 
@@ -41,4 +62,4 @@ export const Home = () => (
         <PropertyCard />        
     </Page>
     
-)
+)};
