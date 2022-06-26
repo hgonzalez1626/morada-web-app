@@ -8,8 +8,7 @@ export const PropertyProfileWrapper = styled.div`
 `
 
 export const PropertyTypeImageWrapper = styled.div`
-    
-    flex: 20;
+        
     //border: 1px solid blue;
     margin: 0;
     display: contents;
@@ -23,7 +22,7 @@ export const PropertyTypeImageWrapper = styled.div`
 
 export const PropertyTypeLabelWrapper = styled.div`     
     
-    flex: 80;
+    flex: 1;
     //border: 1px solid green;  
     margin : 100px 5px 0;
         

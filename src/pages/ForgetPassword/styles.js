@@ -1,7 +1,6 @@
-
 import styled from "styled-components";
 
-export const LoginWrapper_Global = styled.div`
+export const ForgetPassWrapper_Global = styled.div`
     //border: 1px solid blue;   
     
     display: flex;
@@ -9,7 +8,7 @@ export const LoginWrapper_Global = styled.div`
     
 `;
 
-export const LoginWrapper_Global_DOS = styled.div`
+export const ForgetPassWrapper_Global_DOS = styled.div`
     //border: 1px solid blue;   
     
     @media (max-width: 1024px){
@@ -28,7 +27,7 @@ export const LoginWrapper_Global_DOS = styled.div`
 `;
 
 
-export const LoginWrapper = styled.div`
+export const ForgetPassWrapper = styled.div`
     //border: 1px solid red;
     display: flex;    
     justify-content: space-between;

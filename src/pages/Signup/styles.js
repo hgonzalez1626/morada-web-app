@@ -1,15 +1,13 @@
-
 import styled from "styled-components";
 
-export const LoginWrapper_Global = styled.div`
-    //border: 1px solid blue;   
-    
+export const SignupWrapper_Global = styled.div`
+    //border: 1px solid blue;      
     display: flex;
     justify-content: center;
     
 `;
 
-export const LoginWrapper_Global_DOS = styled.div`
+export const SignupWrapper_Global_DOS = styled.div`
     //border: 1px solid blue;   
     
     @media (max-width: 1024px){
@@ -23,12 +21,10 @@ export const LoginWrapper_Global_DOS = styled.div`
             padding: 0 20px;            
             justify-content: center;
             width: 50%;
-    }
-    
+    }    
 `;
 
-
-export const LoginWrapper = styled.div`
+export const SignupWrapper = styled.div`
     //border: 1px solid red;
     display: flex;    
     justify-content: space-between;
@@ -40,5 +36,4 @@ export const LoginWrapper = styled.div`
     }
    
 `;
-
 

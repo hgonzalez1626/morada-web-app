@@ -1,6 +1,7 @@
 import { Button } from "../../components/Button";
 import {Page} from "../../components/Page"
 import { FooterFixed, PageTitle } from "../../globalStyles";
+import { AccountWrapper_Global, AccountWrapper_Global_DOS } from "./styles";
 
 
 export const Account = () =>{
@@ -32,9 +33,14 @@ export const Account = () =>{
 
     return(
     <Page>
-        <PageTitle>Mi cuenta</PageTitle>
-        {
-            isAuth ? <UserInfo />:<UserUnauthorized/>
-        }                          
+        <AccountWrapper_Global>
+            <AccountWrapper_Global_DOS>
+                <PageTitle>Mi cuenta</PageTitle>
+                {
+                    isAuth ? <UserInfo />:<UserUnauthorized/>
+                }
+            </AccountWrapper_Global_DOS>
+        </AccountWrapper_Global>                          
     </Page>
+    
 )};

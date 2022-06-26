@@ -1,13 +1,13 @@
-
 import { useState, useEffect } from "react";
-import { PropertyTypeButton } from "./components/PropertyTypeButton";
+import { Page } from "../../components/Page";
 import { PropertyProfile } from "./components/PropertyProfile";
+//import { Fotohdgf } from "../../Images/Fotohdgf.jpg"
+import { PropertyTypeButton } from "./components/PropertyTypeButton";
 import { PropertyTypesContainer, 
          PropertyTypesContainerHead, 
          PropertyTypesContainerWelcome } from "./styles";
 import {IoBusiness, IoHome, IoMap, IoPrism, IoLocation} from "react-icons/io5";
 import {PropertyCard} from "./components/PropertyCard" 
-import { Page } from "../../components/Page";
 import { PropertyWelcome } from "./components/PropertyWelcome";
 
 const PropertiesTypes = [

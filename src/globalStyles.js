@@ -4,12 +4,19 @@ import { MENU_HEIGHT } from "./constants/styles";
 
 export const GlobalStyle = createGlobalStyle`
         *, ::after, ::before {
-        box-sizing: border-box;
-    }
-    body{
-        margin: 0;
-        padding: 0;
-        font-family: "Lato";
+        box-sizing: border-box;   
+        //border: 1px solid red;           
+    }     
+    
+    body{        
+        //margin: 0;
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 20px;                   
+        font-family: "Lato";        
+        //border: 1px solid red;
+        
+        
     }
 `;
 
@@ -17,6 +24,8 @@ export const PageTitle = styled.h1`
     font-size: 2.8em;
     color: #222;
     font-weight: 300;
+    text-align: center;
+    font-weight: bold;
     
 `
 
@@ -36,21 +45,22 @@ export const FormControl = styled.div`
     border-radius: 6px;
     background-color: #F2F2F2;
     padding: 5px 10px;
-    //border: 1px solid red;
-    display: flex;
+    //border: 1px solid blue;
+    display: flex;        
     
     
 `;
 
 export const FormControlInput = styled.div`
     //border: 1px solid blue;
-    flex: 1;
+    flex: 1;    
 
     label{
         display: block;
         font-size: 0.95em;
         color: #222;
-        font-weight: 500;               
+        font-weight: 500;   
+                    
     }
     input[type="email"], input[type="password"],
     input[type="text"], input[type="number"]{
@@ -77,6 +87,11 @@ export const FormControlInput = styled.div`
         border: none;
         outline: none;        
 
+    }
+
+    span{
+        color: red;
+        font-size: 0.85em;
     }
 `
 
@@ -113,6 +128,7 @@ export const FormControlAction = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
+    
 `
 
 export const FooterFixed = styled.footer`

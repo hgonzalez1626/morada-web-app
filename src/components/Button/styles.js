@@ -12,15 +12,23 @@ const BaseButtonStyle = css`
     border-radius: 6px;
     padding: 9px 0;
     opacity: 0.9;
-    &hover{
-        cursor: pointer;
+    cursor: pointer;    
+    
+    &hover{        
         opacity: 1;
-    }
+    } 
+     
     
 `
 
 export const ButtonStyled = styled.button`
     ${BaseButtonStyle}
+    
+    &:disabled{
+        opacity: 0.5;
+        cursor: not-allowed;
+    }
+
 
 `;
 

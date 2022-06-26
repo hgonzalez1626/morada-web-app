@@ -40,7 +40,7 @@ const MenuAdminItems = [
 ];
 
 export const Menu = () => {
-    const typeProfile = 2;
+    const typeProfile = 1;
    return ( 
     <div>
         <MenuWrapper>
