@@ -9,6 +9,7 @@ import { IoEye, IoEyeOff} from "react-icons/io5";
 import { requestHttp } from "../../utils/HttpRequest";
 import { useForm } from "react-hook-form";
 import { showAlert, SW_ICON } from "../../utils/swAlert";
+import { useAuth } from "../../hooks/useAuth";
 
 
 export const Login = () =>{
@@ -17,6 +18,8 @@ export const Login = () =>{
     const tooglePasswordVisible = () =>{       
         setVisiblePassword(!visiblePassword)
     }
+
+    const { setAuth } = useAuth();
 
     const navigate = useNavigate();
 
@@ -30,9 +33,9 @@ export const Login = () =>{
     } = useForm({ mode: 'onChange'});       
 
     const onSubmitLogin = (data) =>{        
-        loginRequest(data);
+        loginRequest(data);        
     }
-
+    
     const loginRequest = async (data) =>{             
 
         try {           
@@ -41,7 +44,8 @@ export const Login = () =>{
                     endpoint: '/users/login',
                     body: data
                 }
-            ); 
+            );
+            setAuth(response) 
             localStorage.setItem('token', response.data.token);           
             showAlert(
                 'Bienvenido', 
@@ -55,7 +59,7 @@ export const Login = () =>{
        
     }
     return(
-    <Page hideMenu>
+    <Page>
         <LoginWrapper_Global>
         <LoginWrapper_Global_DOS>
         <PageTitle>MORADA</PageTitle>

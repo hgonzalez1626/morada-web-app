@@ -30,14 +30,17 @@ export const Signup = () =>{
             setAlert({
                 msg: 'Todos los campos son obligatorios',
                 error: true
-            })             
+            }) 
+            setTimeout(()=>{
+                setAlert({})
+            }, 7000)            
             return    
         }
         if(password !== cpassword){
-            setAlert({
+            setAlert({  
                 msg: 'Los Password no son iguales',
                 error: true
-            })            
+            })
             return
         }
         if(password.length < 6){

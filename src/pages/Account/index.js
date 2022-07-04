@@ -2,22 +2,22 @@ import { Button } from "../../components/Button";
 import {Page} from "../../components/Page"
 import { FooterFixed, PageTitle } from "../../globalStyles";
 import { AccountWrapper_Global, AccountWrapper_Global_DOS } from "./styles";
-
+import { useAuth } from "../../hooks/useAuth";
 
 export const Account = () =>{
 
-    const isAuth = false;
-
+    const { auth } = useAuth();   
+    //console.log(auth)
     const UserInfo = () =>(
         <div>
-            <h3>Hector</h3>
-            <h5>2323232</h5>
-            <p>hgonzalez1626@gmail.com</p>
+            <h3>Nombre: {auth.data?auth.data.name:''}</h3>
+            <h5>Role:   {auth.data?auth.data.role:''}</h5>
+            <p>Email:   {auth.data?auth.data.email:''}</p>
             <hr />
             <FooterFixed>
                 <Button 
                     label="Cerrar Sección" 
-                    onPress={() =>{alert('Cerrar Sesión')}} 
+                    linkTo={"/login"}
                 />
             </FooterFixed>                       
         </div>
@@ -37,7 +37,7 @@ export const Account = () =>{
             <AccountWrapper_Global_DOS>
                 <PageTitle>Mi cuenta</PageTitle>
                 {
-                    isAuth ? <UserInfo />:<UserUnauthorized/>
+                 auth.data ? <UserInfo />:<UserUnauthorized/>
                 }
             </AccountWrapper_Global_DOS>
         </AccountWrapper_Global>                          

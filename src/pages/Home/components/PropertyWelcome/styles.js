@@ -24,9 +24,5 @@ export const PropertyTypeWelcomeWrapper = styled.div`
         }
 
       
-    }        
-    
-
-   
-
+    }    
 `

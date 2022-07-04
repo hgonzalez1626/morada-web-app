@@ -30,5 +30,17 @@ export const PropertyInfoWrapper = styled.div`
     margin-left: 10px;
     h3{
         margin: 0;
+    }    
+`;
+
+export const PropertyDescriptionWrapper = styled.div`    
+    color: #6262A0;
+    font-weight: bold; 
+    font-size: 1em;   
+    
+    p{
+        color: #6262A0;
+        font-weight: bold; 
+        font-size: 1em;   
     }
 `;

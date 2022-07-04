@@ -9,6 +9,8 @@ import { PropertyTypesContainer,
 import {IoBusiness, IoHome, IoMap, IoPrism, IoLocation} from "react-icons/io5";
 import {PropertyCard} from "./components/PropertyCard" 
 import { PropertyWelcome } from "./components/PropertyWelcome";
+import { useAuth } from "../../hooks/useAuth";
+import useProperty from "../../hooks/useProperty"
 
 const PropertiesTypes = [
     { id: 1, icon: IoBusiness, label:'Apartamentos'},
@@ -18,17 +20,38 @@ const PropertiesTypes = [
     { id: 5, icon: IoLocation, label:'Locales'}
 ];
 
+//* Funcionamiento: Insertar los filtros de min-max, ciudad y zona, BussinesType 
 
 export const Home = () => {
+    
+    const { auth } = useAuth();  
+    const { propertiesAll, submitPropertiesFilters } = useProperty();
 
+    console.log(auth)
+    
+    const [ estado, setEstado ] = useState(false)  
+         
     const [propertyTypeSeleted, setPropertyTypeSelected] = useState(1);
 
     const propertyTypeHandler = (id)=>{
         setPropertyTypeSelected(id);
     }
 
+    //* Funcionamiento Inserte este metodo por tiempo de carga de properties
+    const Cargar = ()=>{
+        setTimeout(()=>{            
+             //console.log('CANT:', properties)              
+             setEstado(true)
+             //console.log(estado)
+        }, 300)           
+    }
+
     useEffect(() => {
-        console.log('propertyTypeSeleted ' + propertyTypeSeleted);
+        const data = {
+            propertyType:propertyTypeSeleted
+        };        
+        submitPropertiesFilters(data);   
+        //console.log('propertyType:' + propertyTypeSeleted);
     },[propertyTypeSeleted])
     
     return(
@@ -36,7 +59,7 @@ export const Home = () => {
         <PropertyTypesContainerHead>
             <PropertyProfile
                 lblhrc={"Fotohdgf.jpg"}
-                lblNameClient = {"Hector Gonzalez"}
+                lblNameClient = {auth.data ? auth.data.name : 'Usuario no registrado'}
             />                    
         </PropertyTypesContainerHead>
                 
@@ -56,10 +79,18 @@ export const Home = () => {
                     /> )
             }
         </PropertyTypesContainer>
-
-        <PropertyCard />
-        <PropertyCard />
-        <PropertyCard />        
+        
+        <>
+            {estado ?
+              propertiesAll.data.map(property => (
+                <PropertyCard
+                    key={property._id}
+                    property = {property}                            
+                />
+             )):Cargar()                                     
+            }
+        </>
+              
     </Page>
     
 )};

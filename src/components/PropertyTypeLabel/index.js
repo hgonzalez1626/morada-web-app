@@ -1,8 +1,10 @@
 import { PropertyTypeLabelWrapper } from "./style";
 
 
-export const PropertyTypeLabel = ({typeId}) => (
-    <PropertyTypeLabelWrapper>
-        <p>Apartamento</p>
-    </PropertyTypeLabelWrapper>
-)
+export const PropertyTypeLabel = ({typeId}) => {
+    return(
+        <PropertyTypeLabelWrapper>
+            <p>{typeId}</p>
+        </PropertyTypeLabelWrapper>
+    )
+}
