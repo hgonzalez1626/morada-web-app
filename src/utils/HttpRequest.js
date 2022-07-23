@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { getToken } from './TokenLS';
 
 export const HTTP_VERBS = {
     POST: "post",
@@ -20,18 +21,21 @@ export const requestHttp = async ({
     endpoint = '/',
     body = {},
     params = {},
-    token = ''
+    token = null
 }) => {
     try {
         const url = process.env.REACT_APP_BASE_API + endpoint;
+        //09/07-3° Paso pregunto si token esta null o tiene algo
+        const authToken = token || getToken();  
+        //console.log(authToken)       
         const options = {
             url,
             method,
             data: body,
             params,
-            headers: headersConfig(token)
+            headers: headersConfig(authToken)
         }; 
-        console.log(options);
+        //console.log(options);
         return await axios(options);
     } catch (error) {    
         console.log(error);    

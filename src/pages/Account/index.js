@@ -1,23 +1,38 @@
+import { useContext } from "react";
+import { useNavigate } from "react-router-dom";
 import { Button } from "../../components/Button";
-import {Page} from "../../components/Page"
+import { Page } from "../../components/Page"
+import { UserContext } from "../../context/UserContext";
 import { FooterFixed, PageTitle } from "../../globalStyles";
+import { removeToken } from "../../utils/TokenLS";
 import { AccountWrapper_Global, AccountWrapper_Global_DOS } from "./styles";
 
 
 export const Account = () =>{
 
-    const isAuth = false;
+    //09/07-10° Paso capturar el context de usuario
+    const { user, closeSeccion } = useContext(UserContext)
+    //console.log(user) 
+    
+
+    const handleCloseSeccion = ()=>{
+        closeSeccion();
+        removeToken();
+        //() => { navigate('/')}
+    }
+
+    const navigate = useNavigate();   
 
     const UserInfo = () =>(
         <div>
-            <h3>Hector</h3>
-            <h5>2323232</h5>
-            <p>hgonzalez1626@gmail.com</p>
+            <h3>Nombre: {user.name}</h3>
+            <h5>Role:   {user.role}</h5>
+            <p>Email:   {user.email}</p>
             <hr />
-            <FooterFixed>
+            <FooterFixed>                
                 <Button 
-                    label="Cerrar Sección" 
-                    onPress={() =>{alert('Cerrar Sesión')}} 
+                    label="Cerrar Sección"  
+                    onPress={handleCloseSeccion}                                                       
                 />
             </FooterFixed>                       
         </div>
@@ -37,7 +52,7 @@ export const Account = () =>{
             <AccountWrapper_Global_DOS>
                 <PageTitle>Mi cuenta</PageTitle>
                 {
-                    isAuth ? <UserInfo />:<UserUnauthorized/>
+                    user.isAuthenticated ? <UserInfo />:<UserUnauthorized/>
                 }
             </AccountWrapper_Global_DOS>
         </AccountWrapper_Global>                          

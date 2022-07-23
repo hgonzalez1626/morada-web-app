@@ -1,7 +1,8 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
+import { UserContext } from "../../context/UserContext"
+
 import { Page } from "../../components/Page";
 import { PropertyProfile } from "./components/PropertyProfile";
-//import { Fotohdgf } from "../../Images/Fotohdgf.jpg"
 import { PropertyTypeButton } from "./components/PropertyTypeButton";
 import { PropertyTypesContainer, 
          PropertyTypesContainerHead, 
@@ -9,6 +10,9 @@ import { PropertyTypesContainer,
 import {IoBusiness, IoHome, IoMap, IoPrism, IoLocation} from "react-icons/io5";
 import {PropertyCard} from "./components/PropertyCard" 
 import { PropertyWelcome } from "./components/PropertyWelcome";
+import { HTTP_VERBS, requestHttp } from "../../utils/HttpRequest";
+
+const ALL_PROPERTIES_TYPE = 0;
 
 const PropertiesTypes = [
     { id: 1, icon: IoBusiness, label:'Apartamentos'},
@@ -20,23 +24,54 @@ const PropertiesTypes = [
 
 
 export const Home = () => {
-
-    const [propertyTypeSeleted, setPropertyTypeSelected] = useState(1);
-
-    const propertyTypeHandler = (id)=>{
-        setPropertyTypeSelected(id);
+    const [propertyTypeSeleted, setPropertyTypeSelected] = useState(ALL_PROPERTIES_TYPE);
+    const { user } = useContext(UserContext)
+    const [properties, setProperties] = useState([]);
+  
+    const propertyTypeHandler = (id)=>{       
+        setPropertyTypeSelected(propertyTypeSeleted === id 
+            ? ALL_PROPERTIES_TYPE : id);        
     }
 
-    useEffect(() => {
-        console.log('propertyTypeSeleted ' + propertyTypeSeleted);
+    useEffect(() => {               
+        getPropertiesAll();           
     },[propertyTypeSeleted])
+
+    //07/16 llamado a obtener todas las propiedades
+    const getPropertiesAll = async ()=>{
+        try {            
+            const response = await requestHttp(
+                {
+                    method: HTTP_VERBS.GET,
+                    endpoint: '/properties',                         
+                    params: makePropertiesFilters()                                     
+                }
+            );             
+            const {data} = response;                
+            setProperties(data);       
+                        
+        } catch (error) {
+            console.log(error)
+        }
+    }
+
+    const makePropertiesFilters = ()=>{
+        const filters = {};   
+        if(propertyTypeSeleted !== ALL_PROPERTIES_TYPE){
+            filters['propertyType'] = propertyTypeSeleted;
+        }
+        console.log(filters);
+        return filters;       
+    }
     
+
+
     return(
     <Page>               
         <PropertyTypesContainerHead>
             <PropertyProfile
-                lblhrc={"Fotohdgf.jpg"}
-                lblNameClient = {"Hector Gonzalez"}
+                lblhrc={"Imagenes/Fotohdgf.jpg"}
+                lblNameClient = {user ? user.name : 'Usuario no registrado'}                           
             />                    
         </PropertyTypesContainerHead>
                 
@@ -46,8 +81,9 @@ export const Home = () => {
                          
         <PropertyTypesContainer>             
             {          
-                PropertiesTypes.map(item => 
-                    <PropertyTypeButton 
+                PropertiesTypes.map((item, key) => 
+                    <PropertyTypeButton
+                        key={key} 
                         selected={propertyTypeSeleted === item.id}
                         icon={item.icon} 
                         label={item.label}
@@ -55,11 +91,14 @@ export const Home = () => {
                         onPress={propertyTypeHandler}
                     /> )
             }
-        </PropertyTypesContainer>
-
-        <PropertyCard />
-        <PropertyCard />
-        <PropertyCard />        
+        </PropertyTypesContainer>               
+        {properties.map((item, key) => 
+            <PropertyCard 
+                key={key}                   
+                {...item}                
+            />
+            )
+        }                     
     </Page>
     
 )};

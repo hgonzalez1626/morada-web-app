@@ -1,40 +1,50 @@
 import { PropertyBusinessType } from "../../../../components/PropertyBusinessType";
 import { PropertyTypeLabel } from "../../../../components/PropertyTypeLabel";
 import { SubTitle } from "../../../../globalStyles";
-import { PropertyCardWrapper, PropertyImageWrapper, PropertyInfoWrapper } from "./style";
+import { PropertyCardWrapper, PropertyDescriptionWrapper, PropertyImageWrapper, PropertyInfoWrapper, PropertyValueWrapper } from "./style";
+import { getStaticImage } from "../../../../utils/StacticImage";
+import { getCityZoneLabel } from "../../../../utils/GetDataConstants";
+import { getCurrencyFormat } from "../../../../utils/CurrencyFormat";
 
-
-export const PropertyCard = () => (
+export const PropertyCard = (props) => {
   
-    <PropertyCardWrapper >
+  return (  
+    
+    <PropertyCardWrapper to={`/PropertyDetail/${props._id}`} >
       <PropertyImageWrapper>
-        <img alt='Apartamento' 
-             src='https://images.ctfassets.net/8lc7xdlkm4kt/5XZ6f7kcqu0cVgTnFoFnLt/52ac8951ab8edd991e28b383a6eac830/61M2.jpg'
+        <img alt='foto propiedad' 
+             //src={`Imagenes/${props.mainImage}`}
+              src={getStaticImage(props.mainImage)}
         />
       </PropertyImageWrapper>
 
-      <PropertyInfoWrapper>
-        <a href="/Property">
-          <h3>Apartamento en Laureles</h3>
-        </a>
-        <SubTitle>
-          Laureles, Medellín
-        </SubTitle>
+      <PropertyInfoWrapper>       
+         
+           <h3>{props.title}</h3>
+         
+         <SubTitle>
+           {props.shortDescription}
+         </SubTitle>
+         <PropertyDescriptionWrapper>          
+           {getCityZoneLabel(props.city, props.zone)}
+         </PropertyDescriptionWrapper>
         
-        <PropertyTypeLabel>
-          <p>Apartamento</p>
-        </PropertyTypeLabel>
+         <PropertyTypeLabel 
+            typeId= {props.propertyType}
+          />         
         
-        <PropertyBusinessType>
-          <p>Venta</p>
-        </PropertyBusinessType>
-        
-        <p>$750.000.000</p>
-      </PropertyInfoWrapper>
-      
-    </PropertyCardWrapper>
-   
-)
+         <PropertyBusinessType
+            busineesType = {props.bussinessType}
+         />
 
-
- 
+         <PropertyDescriptionWrapper>
+          <PropertyValueWrapper>
+            {getCurrencyFormat(props.value)} 
+           </PropertyValueWrapper>
+           <p>{props.description}</p>
+         </PropertyDescriptionWrapper>        
+      </PropertyInfoWrapper>      
+    </PropertyCardWrapper>  
+    
+  )
+}

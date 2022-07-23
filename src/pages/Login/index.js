@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Page } from "../../components/Page"
 import { FormControl, FormControlAction, FormControlInput, PageTitle } from "../../globalStyles";
@@ -9,10 +9,13 @@ import { IoEye, IoEyeOff} from "react-icons/io5";
 import { requestHttp } from "../../utils/HttpRequest";
 import { useForm } from "react-hook-form";
 import { showAlert, SW_ICON } from "../../utils/swAlert";
-
+import { setToken } from "../../utils/TokenLS";
+import { UserContext } from "../../context/UserContext";
 
 export const Login = () =>{
     const [visiblePassword, setVisiblePassword] = useState(false)
+
+    const { user, setUser, requestGetUserInfo } = useContext(UserContext)
 
     const tooglePasswordVisible = () =>{       
         setVisiblePassword(!visiblePassword)
@@ -42,7 +45,10 @@ export const Login = () =>{
                     body: data
                 }
             ); 
-            localStorage.setItem('token', response.data.token);           
+            //09/07-2° Paso reuperar token de login y enviarlo a setToken
+            const {data: dataResponse} = response;             
+            setToken(dataResponse.token); 
+            requestGetUserInfo();                            
             showAlert(
                 'Bienvenido', 
                 "Credenciales Correctas", 

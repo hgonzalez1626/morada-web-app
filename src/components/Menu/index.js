@@ -5,16 +5,19 @@ import { MenuWrapper } from './styles';
 
 const MenuCustomerItems = [
     {
+        key: 1,
         icon: IoHome,
         label: 'Inicio',
         path: '/'
     },
     {
+        key: 2,
         icon: IoStar,
         label: 'Favoritos',
         path: '/favorites'
     },
     {
+        key: 3,
         icon: IoPerson,
         label: 'Perfil',
         path: '/account'
@@ -23,16 +26,19 @@ const MenuCustomerItems = [
 
 const MenuAdminItems = [
     {
+        key: 1,
         icon: IoHome,
         label: 'Inicio',
         path: '/'
     },
     {
+        key: 4,
         icon: IoAddCircle,
         label: 'Agregar',
         path: '/addproperty'
     },
     {
+        key: 3,
         icon: IoPerson,
         label: 'Perfil',
         path: '/account'
