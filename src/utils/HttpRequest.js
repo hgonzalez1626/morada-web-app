@@ -8,9 +8,14 @@ export const HTTP_VERBS = {
     DELETE: "delete"
 };
 
-const headersConfig = (token) =>{    
+export const CONTENT_TYPES = {
+    APPLICATION_JSON: "application/json",
+    MULTIPART_FORM_DTA: "multipart/form-data"
+}
+
+const headersConfig = (contentType, token) =>{    
     return {
-        "Content-Type": "application/json",
+        "Content-Type": contentType,
         Accept: "application/json",
         Authorization: `Bearer ${token}`
     }
@@ -21,7 +26,8 @@ export const requestHttp = async ({
     endpoint = '/',
     body = {},
     params = {},
-    token = null
+    token = null,
+    contentType = CONTENT_TYPES.APPLICATION_JSON
 }) => {
     try {
         const url = process.env.REACT_APP_BASE_API + endpoint;
@@ -33,7 +39,7 @@ export const requestHttp = async ({
             method,
             data: body,
             params,
-            headers: headersConfig(authToken)
+            headers: headersConfig(contentType,authToken)
         }; 
         //console.log(options);
         return await axios(options);

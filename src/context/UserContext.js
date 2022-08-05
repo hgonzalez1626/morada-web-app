@@ -4,7 +4,7 @@ import { getToken, removeToken } from "../utils/TokenLS";
 
 //09/07-8° Paso creo context e inicializo el estate como un usuario no logeado
 const initialState = {
-    role: 0,
+    role: 3,
     name: '',
     email: '',    
     isAuthenticated: false

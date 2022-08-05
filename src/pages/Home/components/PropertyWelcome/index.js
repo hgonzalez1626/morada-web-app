@@ -11,5 +11,4 @@ export const PropertyWelcome = () =>(
             Best place <span>nearby</span> <span><BsHandThumbsUp /></span>  
         </h2>   
     </PropertyTypeWelcomeWrapper>
-    
 )

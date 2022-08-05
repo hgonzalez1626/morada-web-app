@@ -21,6 +21,7 @@ import { ConfirmAccount} from './pages/ConfirmAccount'
 import { NewPassword } from './pages/NewPassword'
 import { getToken, removeToken } from './utils/TokenLS'
 import { HTTP_VERBS, requestHttp } from './utils/HttpRequest'
+import { POCUploadImage } from './pages/POCUploadImage'
 
 
 
@@ -80,7 +81,8 @@ export const Navigation = () => {
             <Route path='/Signup' element={<Signup />} />                  
             <Route path='/ForgetPassword' element={<ForgePassword />} /> 
             <Route path='/ConfirmAccount/:id' element={<ConfirmAccount/>} /> 
-            <Route path='/ForgetPassword/:token' element={<NewPassword/>} />             
+            <Route path='/ForgetPassword/:token' element={<NewPassword/>} />  
+            <Route path='/pocuploadimage' element={<POCUploadImage/>}/>           
             <Route path='*' element={<NotFound />} />           
         </Routes>
     

@@ -10,7 +10,16 @@ export const PropertyTypeDetailWrapper = styled.div`
 export const PropertyDetail_Options = styled.div`
     //border: 1px solid blue;      
     display: flex;
-    justify-content: center;        
+    justify-content: center;       
+    
+    a{
+        font-size: 1.4em;
+         
+        span{            
+            color: #6262A0;
+            font-weight: bold;        
+        }
+    }
 `;
 
 export const PropertyDetail_Global = styled.div`
