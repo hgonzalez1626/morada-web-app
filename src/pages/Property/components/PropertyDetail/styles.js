@@ -8,18 +8,37 @@ export const PropertyTypeDetailWrapper = styled.div`
 
 `
 export const PropertyDetail_Options = styled.div`
-    //border: 1px solid blue;      
+         
     display: flex;
-    justify-content: center;       
+    div{       
+        //border: 1px solid red; 
+        flex : 1 ;       
+        
+    }
+    .request{       
+        //border: 1px solid orange;            
+        align-items: right ;
+    }
+    .favorite{       
+        //border: 1px solid blue;  
+        padding-right: 20px ;
+        
+    }
+    textarea{          
+        width: 100%;
+    }
+    
+    font-size : 1em ;
     
     a{
-        font-size: 1.4em;
-         
+        font-size: 1em;        
         span{            
             color: #6262A0;
             font-weight: bold;        
         }
     }
+
+    
 `;
 
 export const PropertyDetail_Global = styled.div`
@@ -35,12 +54,12 @@ export const PropertyDetail_Global_DOS = styled.div`
             //margin-top: 5px;
             padding: 5px;            
             justify-content: center;
-            width: 100%;            
+            width: 100%;                
     } 
     @media (min-width: 1024px){            
             padding: 0 20px;            
             justify-content: center;
-            width: 50%;
+            width: 40%;
     }
     
 `;

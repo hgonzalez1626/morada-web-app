@@ -1,5 +1,5 @@
 import { useContext } from 'react';
-import { IoHome, IoPerson, IoStar, IoAddCircle } from 'react-icons/io5'
+import { IoHome, IoPerson, IoStar, IoAddCircle, IoPodium } from 'react-icons/io5'
 import { UserContext } from '../../context/UserContext';
 import { MenuItem } from './MenuItem';
 import { MenuWrapper } from './styles';
@@ -32,6 +32,12 @@ const MenuAdminItems = [
         icon: IoHome,
         label: 'Inicio',
         path: '/'
+    },   
+    {
+        key: 4,
+        icon: IoPodium,
+        label: 'Mis Propiedades',
+        path: '/PropertiesOwner'
     },
     {
         key: 4,

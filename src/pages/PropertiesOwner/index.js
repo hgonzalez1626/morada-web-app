@@ -1,39 +1,39 @@
 import { useContext, useEffect, useState } from 'react'
 import { Page } from "../../components/Page"
-import { FavoriteTitleWrapper, FavoriteTypeContainerDetail, FavoriteWrapper } from './styles';
-import { FavoritePreview } from './components/FavoritePreview';
+import { PropertiesOwnerTitleWrapper, PropertiesOwnerTypeContainerDetail, PropertiesOwnerWrapper } from './styles';
+import { PropertiesOwnerPreview } from './components/PropertiesOwnerPreview';
 import { UserContext } from '../../context/UserContext';
 import { getToken } from '../../utils/TokenLS';
 import { HTTP_VERBS, requestHttp } from '../../utils/HttpRequest';
 
 
-export const Favorites = () => {
+export const PropertiesOwner = () => {
 
     const { user } = useContext(UserContext)
-    const [favorites, setFavorites] = useState([])
+    const [propertiesOwner, setPropertiesOwner] = useState([])
     const [estado, setEstado] = useState(false)
 
-    console.log(favorites);
+    //console.log(propertiesOwner);
 
     useEffect(() => {
-        const getFavorites = async () => {
+        const getPropertiesOwner = async () => {
             try {
                 const token = getToken()
                 if (!token) return
                 const response = await requestHttp(
                     {
                         method: HTTP_VERBS.GET,
-                        endpoint: '/favorites',
+                        endpoint: '/properties/Owner',
                         token: token
                     }
                 );
                 const { data } = response;
-                setFavorites(data)
+                setPropertiesOwner(data)
             } catch (error) {
                 console.log(error)
             }
         }
-        getFavorites();
+        getPropertiesOwner();
     }, [])
 
     //* Funcionamiento Inserte este metodo por tiempo de carga de properties
@@ -47,22 +47,22 @@ export const Favorites = () => {
 
     return (
         <Page>
-            <FavoriteWrapper>
-                <FavoriteTitleWrapper>
-                    <h1>Propiedades Favoritas De: "<span>{user.isAuthenticated ? user.name : ''}"</span> </h1>
-                </FavoriteTitleWrapper>
-                <FavoriteTypeContainerDetail>
+            <PropertiesOwnerWrapper>
+                <PropertiesOwnerTitleWrapper>
+                    <h1>Propiedades De La Inmobiliaria: "<span>{user.isAuthenticated ? user.name : ''}"</span> </h1>
+                </PropertiesOwnerTitleWrapper>
+                <PropertiesOwnerTypeContainerDetail>
                     {estado ?
-                        favorites.map(property => (
-                            <FavoritePreview
+                        propertiesOwner.map(property => (
+                            <PropertiesOwnerPreview
                                 key={property._id}
                                 property={property}
                             />
                         ))
                         : Cargar()
                     }
-                </FavoriteTypeContainerDetail>
-            </FavoriteWrapper>
+                </PropertiesOwnerTypeContainerDetail>
+            </PropertiesOwnerWrapper>
         </Page>
     )
 };

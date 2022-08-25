@@ -76,6 +76,7 @@ export const FormControlInput = styled.div`
 
     }
 
+
     select{
         //display: block;
         width: 100%;
@@ -124,6 +125,15 @@ export const FormControlInputFile = styled.div`
 `
 
 export const FormControlAction = styled.div`
+    //border: 1px solid orange;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+`
+
+
+export const FormControlActionProperty = styled.div`
     //border: 1px solid orange;
     display: flex;
     justify-content: center;

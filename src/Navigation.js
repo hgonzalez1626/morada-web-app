@@ -22,6 +22,7 @@ import { NewPassword } from './pages/NewPassword'
 import { getToken, removeToken } from './utils/TokenLS'
 import { HTTP_VERBS, requestHttp } from './utils/HttpRequest'
 import { POCUploadImage } from './pages/POCUploadImage'
+import { PropertiesOwner } from './pages/PropertiesOwner'
 
 
 
@@ -76,6 +77,7 @@ export const Navigation = () => {
             <Route path='/AddProperty' element={<AddProperty />} />
             <Route path='/PropertyDetail/:id' element={<PropertyDetail />} />
             <Route path='/Favorites' element={<Favorites />} />  
+            <Route path='/PropertiesOwner' element={<PropertiesOwner />} />
             <Route path='/Login' element={<Login />} />
             <Route path='/Account' element={<Account />} />            
             <Route path='/Signup' element={<Signup />} />                  

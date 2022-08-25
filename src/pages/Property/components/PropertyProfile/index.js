@@ -1,10 +1,10 @@
 import { PropertyProfileWrapper, PropertyTypeImageWrapper, PropertyTypeLabelWrapper } from "./styles"; 
 
-export const PropertyProfile = ({ lblhrc, lblNameClient}) =>(
+export const PropertyProfile = ({ lblNameClient}) =>(
     <PropertyProfileWrapper>
         
         <PropertyTypeImageWrapper>
-            <img src={lblhrc} alt="imgPerfil"/> 
+           
         </PropertyTypeImageWrapper>
         
         <PropertyTypeLabelWrapper>
@@ -20,11 +20,4 @@ export const PropertyProfile = ({ lblhrc, lblNameClient}) =>(
 
 
 )
-    
-
-    
-
-    
-    
-
     
